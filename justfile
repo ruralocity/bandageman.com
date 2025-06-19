@@ -5,7 +5,7 @@ list:
 # Run server locally
 [group("development")]
 run:
-  python3 -m http.server site --directory site
+  python3 -m http.server --directory site
 
 # Add game
 [group("carts")]
