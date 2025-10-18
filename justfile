@@ -51,14 +51,14 @@ _inject-metadata FILE GAME:
 <meta property="og:url" content="https://bandageman.com/{{GAME}}/">\
 <meta property="og:title" content="'"$GAME_TITLE"' - Bandageman Studios">\
 <meta property="og:description" content="Play '"$GAME_TITLE"', a PICO-8 game by Bandageman Studios">\
-<meta property="og:image" content="https://bandageman.com/{{GAME}}/{{GAME}}.gif">\
+<meta property="og:image" content="https://bandageman.com/{{GAME}}/{{GAME}}-splash.png">\
 \
 <!-- Twitter -->\
 <meta name="twitter:card" content="summary_large_image">\
 <meta name="twitter:url" content="https://bandageman.com/{{GAME}}/">\
 <meta name="twitter:title" content="'"$GAME_TITLE"' - Bandageman Studios">\
 <meta name="twitter:description" content="Play '"$GAME_TITLE"', a PICO-8 game by Bandageman Studios">\
-<meta name="twitter:image" content="https://bandageman.com/{{GAME}}/{{GAME}}.gif">\
+<meta name="twitter:image" content="https://bandageman.com/{{GAME}}/{{GAME}}-splash.png">\
 \
 <!-- Theme Color -->\
 <meta name="theme-color" content="#222222">\
