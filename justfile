@@ -79,8 +79,19 @@ _inject-footer FILE:
     # Find the line with </div> <!-- body_0 --> and inject footer before it
     sed -i '' '/<\/div> <!-- body_0 -->/i\
 \
+<style>\
+.footer-logo-link:hover img {\
+	animation: pop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);\
+}\
+@keyframes pop {\
+	0% { transform: scale(1); }\
+	50% { transform: scale(1.2); }\
+	100% { transform: scale(1); }\
+}\
+</style>\
+\
 <div style="text-align: center; margin-top: 40px; padding-bottom: 20px;">\
-	<a href="/">\
+	<a href="/" class="footer-logo-link">\
 		<img src="/images/bandageman-transparent.png" alt="Bandageman Studios" style="max-width: 50px; height: auto;">\
 	</a>\
 </div>\
