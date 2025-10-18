@@ -14,7 +14,7 @@ add GAME:
   cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}/{{GAME}}.html site/{{GAME}}/index.html
   cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}/{{GAME}}.js site/{{GAME}}/{{GAME}}.js
   @just _inject-metadata site/{{GAME}}/index.html {{GAME}}
-  @just _inject-footer site/{{GAME}}/index.html
+  @just _inject-footer site/{{GAME}}/index.html {{GAME}}
 
 # Update game files
 [group("carts")]
@@ -22,7 +22,7 @@ update GAME:
   cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}/{{GAME}}.html site/{{GAME}}/index.html
   cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}/{{GAME}}.js site/{{GAME}}/{{GAME}}.js
   @just _inject-metadata site/{{GAME}}/index.html {{GAME}}
-  @just _inject-footer site/{{GAME}}/index.html
+  @just _inject-footer site/{{GAME}}/index.html {{GAME}}
 
 # Internal: Inject metadata into HTML file
 _inject-metadata FILE GAME:
@@ -71,7 +71,7 @@ _inject-metadata FILE GAME:
   fi
 
 # Internal: Inject footer into HTML file
-_inject-footer FILE:
+_inject-footer FILE GAME:
   #!/usr/bin/env bash
   set -euo pipefail
   # Check if footer already exists
@@ -96,4 +96,10 @@ _inject-footer FILE:
 	</a>\
 </div>\
 ' "{{FILE}}"
+  fi
+  # Add iOS audio fix if not already present
+  if ! grep -q 'fix-pico8-ios-sound.js' "{{FILE}}"; then
+    sed -i '' 's|</body></html>|<script src="/fix-pico8-ios-sound.js" data-original-file="{{GAME}}.js"></script>\
+\
+</body></html>|' "{{FILE}}"
   fi
