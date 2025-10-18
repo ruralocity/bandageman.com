@@ -11,11 +11,11 @@ run:
 [group("carts")]
 add GAME:
   mkdir -p site/{{GAME}}
-  cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}.html site/{{GAME}}/index.html
-  cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}.js site/{{GAME}}/{{GAME}}.js
+  cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}/{{GAME}}.html site/{{GAME}}/index.html
+  cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}/{{GAME}}.js site/{{GAME}}/{{GAME}}.js
 
 # Update game files
 [group("carts")]
 update GAME:
-  cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}.html site/{{GAME}}/index.html
-  cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}.js site/{{GAME}}/{{GAME}}.js
+  cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}/{{GAME}}.html site/{{GAME}}/index.html
+  cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}/{{GAME}}.js site/{{GAME}}/{{GAME}}.js
