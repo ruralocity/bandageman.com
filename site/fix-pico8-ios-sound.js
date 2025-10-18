@@ -5,6 +5,9 @@
   var file = s.getAttribute('data-original-file')
   if (!file) throw new Error('Missing data-original-file attribute.')
 
+  // detect iOS
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+
   // strip vendor prefixes
   window.AudioContext = window.AudioContext
     || window.webkitAudioContext
@@ -16,20 +19,34 @@
   var ctx = new window.AudioContext
   window.AudioContext = function() { return ctx }
 
+  // if not iOS, just load the game directly
+  if (!isIOS) {
+    var s = document.createElement('script')
+    s.setAttribute('src', file)
+    document.body.appendChild(s)
+    return
+  }
+
+  // iOS-specific overlay below
+
   // create overlay
   var o = document.createElement('div')
-  o.innerHTML = 'tap screen to load game'
+  o.innerHTML = '<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 20px;">' +
+    '<img src="/images/bandageman-transparent.png" alt="" style="max-width: 100px; height: auto;">' +
+    '<span>tap to play</span>' +
+    '</div>'
   o.style.cssText = [
     'position: fixed',
     'top: 0',
     'left: 0',
     'right: 0',
     'bottom: 0',
-    'background: rgb(128, 128, 128)',
-    'background: rgba(128, 128, 128, 0.5)',
+    'background: rgb(0, 0, 0)',
+    'background: rgba(0, 0, 0, 0.9)',
     'color: white',
     'text-align: center',
-    'padding-top: 200px',
+    'font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    'font-size: 18px',
   ].map(function(p) { return p + ';' }).join('')
   document.body.appendChild(o)
 
