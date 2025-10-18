@@ -1,35 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bandageman Studios - Super-serious game development</title>
+{% extends "base.html.j2" %}
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Bandageman Studios - Super-serious indie game development from Saint Louis, Missouri. Play our PICO-8 games!">
-    <meta name="keywords" content="indie games, PICO-8, retro games, pixel art games, bandageman studios">
-    <meta name="author" content="Bandageman Studios">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bandageman.com/">
-    <meta property="og:title" content="Bandageman Studios - Super-serious game development">
-    <meta property="og:description" content="Bandageman Studios - Super-serious indie game development from Saint Louis, Missouri. Play our PICO-8 games!">
-    <meta property="og:image" content="https://bandageman.com/images/bandageman-logo.png">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://bandageman.com/">
-    <meta name="twitter:title" content="Bandageman Studios - Super-serious game development">
-    <meta name="twitter:description" content="Bandageman Studios - Super-serious indie game development from Saint Louis, Missouri. Play our PICO-8 games!">
-    <meta name="twitter:image" content="https://bandageman.com/images/bandageman-logo.png">
-
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#000000">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://bandageman.com/">
-
+{% block extra_head %}
 <style>
     * {
         box-sizing: border-box;
@@ -133,27 +104,24 @@
         }
     }
 </style>
+{% endblock %}
 
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-    <script defer data-domain="bandageman.com" src="https://plausible.io/js/script.js"></script>
-</head>
-<body>
+{% block content %}
 <img src="/images/bandageman.png" alt="Bandageman Studios" class="logo">
 <div class="games">
-    <a href="dream-ghoul/" class="game-link">
-        <img src="dream-ghoul/dream-ghoul.gif" alt="Dream Ghoul">
+    {% for game in games %}
+    <a href="{{ game.slug }}/" class="game-link">
+        <img src="{{ game.slug }}/{{ game.slug }}.gif" alt="{{ game.title }}">
     </a>
+    {% endfor %}
+    {% for i in range(coming_soon_slots) %}
     <div class="coming-soon">
         <img src="/images/bandageman-transparent.png" alt="">
         <span class="coming-soon-text">coming someday</span>
     </div>
-    <div class="coming-soon">
-        <img src="/images/bandageman-transparent.png" alt="">
-        <span class="coming-soon-text">coming someday</span>
-    </div>
+    {% endfor %}
 </div>
 <footer style="text-align: center; margin-top: 40px; padding-bottom: 20px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: white; font-size: 14px;">
     bandageman studios <span style="padding: 0 12px;">🤍</span> super-serious game development <span class="footer-heart-desktop" style="padding: 0 12px;">🤍</span><br class="footer-heart-mobile"> saint louis, missouri, u.s.a.
 </footer>
-</body>
-</html>
+{% endblock %}

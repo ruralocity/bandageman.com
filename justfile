@@ -2,32 +2,29 @@
 list:
   @just --list
 
-# Run server locally
+# Build the site from templates
+[group("development")]
+build:
+  uv run build.py
+
+# Run server locally (builds first)
 [group("development")]
 run:
-  python3 -m http.server --directory site
+  @just build
+  uv run python -m http.server --directory site
 
-# Add game
+# Add game to PICO-8 cart directory
 [group("carts")]
 add GAME:
   mkdir -p site/{{GAME}}
   cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}/{{GAME}}.html site/{{GAME}}/index.html
   cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}/{{GAME}}.js site/{{GAME}}/{{GAME}}.js
-  @just _inject-metadata site/{{GAME}}/index.html {{GAME}}
-  @just _inject-footer site/{{GAME}}/index.html
+  uv run build.py --add-game {{GAME}}
+  @echo "\nRun 'just build' to regenerate the homepage with the new game."
 
-# Update game files
+# Update game files from PICO-8
 [group("carts")]
 update GAME:
   cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}/{{GAME}}.html site/{{GAME}}/index.html
   cp ~/Library/Application\ Support/pico-8/carts/{{GAME}}/{{GAME}}.js site/{{GAME}}/{{GAME}}.js
-  @just _inject-metadata site/{{GAME}}/index.html {{GAME}}
-  @just _inject-footer site/{{GAME}}/index.html
-
-# Internal: Inject metadata into HTML file
-_inject-metadata FILE GAME:
-  ./scripts/inject-metadata.sh {{FILE}} {{GAME}}
-
-# Internal: Inject footer into HTML file
-_inject-footer FILE:
-  ./scripts/inject-footer.sh {{FILE}}
+  @echo "✓ Updated {{GAME}} files from PICO-8"

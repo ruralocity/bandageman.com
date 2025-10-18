@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ page_title }}{% endblock %}</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% block description %}{{ description }}{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}{{ keywords }}{% endblock %}">
+    <meta name="author" content="Bandageman Studios">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ og_url }}">
+    <meta property="og:title" content="{% block og_title %}{{ page_title }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ description }}{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ og_image }}{% endblock %}">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ og_url }}">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ page_title }}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ description }}{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{{ og_image }}{% endblock %}">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="{% block theme_color %}#000000{% endblock %}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ og_url }}">
+
+    {% block extra_head %}{% endblock %}
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <script defer data-domain="bandageman.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>

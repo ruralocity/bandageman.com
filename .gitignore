@@ -1,0 +1,24 @@
+# Python / uv
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+
+# Environment
+.env
+.env.local
+
+# Build artifacts (keep site/ since it's deployed)
+# site/ is not ignored - it's the output directory
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
