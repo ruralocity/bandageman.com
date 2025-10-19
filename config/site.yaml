@@ -9,9 +9,13 @@ homepage:
     Louis, Missouri. Play our PICO-8 games!
   keywords: indie games, PICO-8, retro games, pixel art games, bandageman studios
   og_image: https://bandageman.com/images/bandageman-logo.png
-  coming_soon_slots: 2
+  coming_soon_slots: 1
 games:
 - slug: dream-ghoul
   title: Dream Ghoul
   description: Play Dream Ghoul, a PICO-8 game by Bandageman Studios
   keywords: Dream Ghoul, PICO-8, indie game, retro game, bandageman studios
+- slug: dans-dream-run
+  title: Dan's Dream Run
+  description: Play Dan's Dream Run, a PICO-8 game by Bandageman Studios
+  keywords: Dan's Dream Run, PICO-8, indie game, retro game, bandageman studios
