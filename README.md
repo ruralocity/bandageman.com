@@ -1,6 +1,6 @@
 # bandageman.com
 
-Source for Bandage Man Studios.
+Source for Bandageman Studios, a super-serious independent game development studio in St. Louis, MO.
 
 ## Usage
 
