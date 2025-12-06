@@ -9,7 +9,7 @@ homepage:
     Louis, Missouri. Play our PICO-8 games!
   keywords: indie games, PICO-8, retro games, pixel art games, bandageman studios
   og_image: https://bandageman.com/images/bandageman-logo.png
-  coming_soon_slots: 1
+  coming_soon_slots: 0
 games:
 - slug: space-cowboy
   title: Space Cowboy
