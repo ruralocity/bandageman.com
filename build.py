@@ -124,9 +124,13 @@ def inject_game_metadata(game_dir: Path, game_config: dict, base_url: str):
 	50% { transform: scale(1.2); }
 	100% { transform: scale(1); }
 }
+.tips-link:hover {
+	text-decoration: underline !important;
+}
 </style>
 
 <div style="text-align: center; margin-top: 40px; padding-bottom: 20px;">
+	<div style="margin-bottom: 15px;"><span style="padding: 0 12px;">🤍</span><a href="https://ko-fi.com/bandageman" class="tips-link" style="color: white; text-decoration: none; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">tips &amp; merch</a><span style="padding: 0 12px;">🤍</span></div>
 	<a href="/" class="footer-logo-link">
 		<img src="/images/bandageman-transparent.png" alt="Bandageman Studios" style="max-width: 50px; height: auto;">
 	</a>
